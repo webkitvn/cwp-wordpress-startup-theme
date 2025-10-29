@@ -62,4 +62,5 @@ wp-config.php
 /.claude/
 /.cursor/
 /.factory/
+/.github/
 /openspec/
