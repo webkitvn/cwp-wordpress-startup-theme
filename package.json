@@ -7,9 +7,9 @@
 	"scripts": {
 		"dev": "vite build --watch --mode development",
 		"build": "vite build",
-		"lint:js": "eslint src --ext .js,.jsx,.ts,.tsx --max-warnings=100 --rule 'max-lines:[1,{max:400,skipBlankLines:true,skipComments:true}]'",
-		"lint:js:strict": "eslint src --ext .js,.jsx,.ts,.tsx --rule 'max-lines:[2,{max:500,skipBlankLines:true,skipComments:true}]' --max-warnings=0",
-		"format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss}\""
+		"lint:js": "eslint src blocks --ext .js,.jsx,.ts,.tsx --max-warnings=100 --rule 'max-lines:[1,{max:400,skipBlankLines:true,skipComments:true}]'",
+		"lint:js:strict": "eslint src blocks --ext .js,.jsx,.ts,.tsx --rule 'max-lines:[2,{max:500,skipBlankLines:true,skipComments:true}]' --max-warnings=0",
+		"format": "prettier --write \"{src,blocks}/**/*.{js,jsx,ts,tsx,json,css,scss}\""
 	},
 	"dependencies": {
 		"@wordpress/block-editor": "^15.0.0",
@@ -26,7 +26,6 @@
 		"@types/react-dom": "^18.3.5",
 		"@types/wordpress__block-editor": "^11.5.15",
 		"@types/wordpress__blocks": "^12.5.14",
-		"@types/wordpress__components": "^23.0.11",
 		"@typescript-eslint/eslint-plugin": "^8.14.0",
 		"@typescript-eslint/parser": "^8.14.0",
 		"@wordpress/eslint-plugin": "^21.3.0",

@@ -1,3 +1,6 @@
+/**
+ * WordPress dependencies
+ */
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps } from '@wordpress/block-editor';
 import { TextControl } from '@wordpress/components';
@@ -7,22 +10,29 @@ interface BlockAttributes {
 	title: string;
 }
 
-registerBlockType('cwp/example-dynamic', {
-	edit: ({ attributes, setAttributes }) => {
-		const blockProps = useBlockProps();
-		const { title } = attributes as BlockAttributes;
+interface EditProps {
+	attributes: BlockAttributes;
+	setAttributes: (attrs: Partial<BlockAttributes>) => void;
+}
 
-		return (
-			<div {...blockProps}>
-				<TextControl
-					label={__('Title', 'cwp')}
-					value={title}
-					onChange={(value: string) => setAttributes({ title: value })}
-				/>
-				<p className="preview">
-					{__('Preview:', 'cwp')} {title}
-				</p>
-			</div>
-		);
-	},
+const Edit = ({ attributes, setAttributes }: EditProps) => {
+	const blockProps = useBlockProps();
+	const { title } = attributes as BlockAttributes;
+
+	return (
+		<div {...blockProps}>
+			<TextControl
+				label={__('Title', 'cwp')}
+				value={title}
+				onChange={(value: string) => setAttributes({ title: value })}
+			/>
+			<p className="preview">
+				{__('Preview:', 'cwp')} {title}
+			</p>
+		</div>
+	);
+};
+
+registerBlockType('cwp/example-dynamic', {
+	edit: Edit,
 });
