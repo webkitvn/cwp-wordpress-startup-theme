@@ -57,7 +57,9 @@ wp-config.php
 .augment/rules/byterover-rules.md
 
 
-node_modules
-vendor
-.claude
-.cursor
+/node_modules/
+/vendor/
+/.claude/
+/.cursor/
+/.factory/
+/openspec/
