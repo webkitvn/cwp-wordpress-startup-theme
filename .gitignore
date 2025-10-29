@@ -62,5 +62,9 @@ wp-config.php
 /.claude/
 /.cursor/
 /.factory/
-/.github/
-/openspec/
+
+# Keep assets directory but ignore source maps
+/assets/**/*.map
+
+# OpenSpec (keep for development)
+# /openspec/

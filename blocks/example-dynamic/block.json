@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cwp/example-dynamic",
+	"version": "1.0.0",
+	"title": "Example Dynamic Block",
+	"category": "text",
+	"icon": "admin-generic",
+	"description": "A dynamic example block with server-side rendering",
+	"keywords": ["example", "dynamic"],
+	"textdomain": "cwp",
+	"editorScript": "file:./editor.js",
+	"render": "file:./render.php",
+	"supports": {
+		"html": false,
+		"align": true
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": "Dynamic Block Title"
+		}
+	}
+}

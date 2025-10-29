@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cwp/example-static",
+	"version": "1.0.0",
+	"title": "Example Static Block",
+	"category": "text",
+	"icon": "smiley",
+	"description": "A static example block with TypeScript and React",
+	"keywords": ["example", "static"],
+	"textdomain": "cwp",
+	"editorScript": "file:./editor.js",
+	"viewScript": "file:./view.js",
+	"supports": {
+		"html": false,
+		"align": true
+	},
+	"attributes": {
+		"message": {
+			"type": "string",
+			"default": "Hello from static block!"
+		}
+	}
+}

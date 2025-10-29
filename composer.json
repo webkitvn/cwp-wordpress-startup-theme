@@ -1,0 +1,24 @@
+{
+	"name": "cwp/startuptheme",
+	"description": "Modern WordPress starter theme with Vite, Tailwind CSS, and quality tooling",
+	"type": "wordpress-theme",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=8.3"
+	},
+	"require-dev": {
+		"squizlabs/php_codesniffer": "^3.7",
+		"wp-coding-standards/wpcs": "^3.0",
+		"phpcompatibility/phpcompatibility-wp": "^2.1"
+	},
+	"scripts": {
+		"phpcs": "phpcs --standard=WordPress --ignore=vendor/,node_modules/,assets/ .",
+		"phpcbf": "phpcbf --standard=WordPress --ignore=vendor/,node_modules/,assets/ .",
+		"lint:php": "find . -name '*.php' ! -path './vendor/*' ! -path './node_modules/*' ! -path './assets/*' -exec php -l {} \\;"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
+}

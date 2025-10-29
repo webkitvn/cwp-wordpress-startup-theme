@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+
+/* Block editor styles */
+.editor-styles-wrapper {
+	@apply font-sans;
+}
