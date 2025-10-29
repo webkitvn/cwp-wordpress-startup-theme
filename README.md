@@ -1,9 +1,10 @@
 # StartupTheme
 
-Modern WordPress starter theme with Vite, Tailwind CSS v4, and quality tooling.
+Modern WordPress child theme for Kadence with Vite, Tailwind CSS v4, and quality tooling.
 
 ## Features
 
+- **Kadence Child Theme**: Inherits from Kadence parent theme while maintaining custom build tooling
 - **Modern Build System**: Vite for fast, efficient builds with manifest-based asset loading
 - **Tailwind CSS v4**: Latest version using the official Vite plugin (no PostCSS required)
 - **TypeScript Support**: Full TypeScript integration for blocks and frontend code
@@ -13,6 +14,7 @@ Modern WordPress starter theme with Vite, Tailwind CSS v4, and quality tooling.
 
 ## Requirements
 
+- **Kadence Theme**: Must have Kadence parent theme installed and active
 - PHP >= 8.3
 - Node.js >= 18
 - pnpm (package manager)
@@ -20,20 +22,27 @@ Modern WordPress starter theme with Vite, Tailwind CSS v4, and quality tooling.
 
 ## Installation
 
-1. **Install PHP dependencies:**
+1. **Install and activate Kadence theme:**
+   - Install the Kadence parent theme from WordPress.org or your preferred source
+   - Activate the Kadence theme in WordPress admin
+
+2. **Install PHP dependencies:**
 ```bash
 composer install
 ```
 
-2. **Install Node dependencies:**
+3. **Install Node dependencies:**
 ```bash
 pnpm install
 ```
 
-3. **Build assets:**
+4. **Build assets:**
 ```bash
 pnpm build
 ```
+
+5. **Activate child theme:**
+   - Activate this child theme in WordPress admin (Appearance > Themes)
 
 ## Development
 
@@ -112,14 +121,15 @@ startuptheme/
 │       ├── editor.tsx
 │       └── render.php
 ├── inc/                   # Theme includes
-│   ├── theme-setup.php    # Theme support and configuration
 │   ├── enqueue-assets.php # Asset loading via manifest
 │   └── block-registration.php # Block registration
 ├── src/                   # Source files
 │   ├── main.ts           # Main frontend script
 │   ├── main.css          # Main stylesheet (with Tailwind)
 │   └── editor.css        # Block editor styles
-├── template-parts/        # Template partials
+├── template-parts/        # Template partials (optional overrides)
+├── style.css             # Theme header with parent declaration
+├── functions.php         # Child theme functions
 ├── composer.json         # PHP dependencies
 ├── package.json          # Node dependencies
 ├── tsconfig.json         # TypeScript configuration
@@ -128,6 +138,15 @@ startuptheme/
 ├── .prettierrc.json      # Prettier configuration
 └── .phpcs.xml.dist       # PHPCS configuration
 ```
+
+## Child Theme Notes
+
+This is a Kadence child theme, which means:
+- **Inherits all functionality** from the Kadence parent theme
+- **No header.php or footer.php** - these are inherited from Kadence
+- **No theme setup functions** - theme support and features come from Kadence
+- Uses `get_stylesheet_directory()` for child theme file paths
+- Can override any parent theme template by creating a file with the same name
 
 ## Creating New Blocks
 
