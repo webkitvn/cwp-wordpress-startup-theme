@@ -4,7 +4,7 @@
     "name": "index"
   },
   "blocks/example-dynamic/editor.tsx": {
-    "file": "example-dynamic-editor.BOeKj3DC.js",
+    "file": "example-dynamic-editor.Y5sh2Xbo.js",
     "name": "example-dynamic-editor",
     "src": "blocks/example-dynamic/editor.tsx",
     "isEntry": true,
@@ -13,7 +13,7 @@
     ]
   },
   "blocks/example-static/editor.tsx": {
-    "file": "example-static-editor.BU7QMobW.js",
+    "file": "example-static-editor.DuQt_A9U.js",
     "name": "example-static-editor",
     "src": "blocks/example-static/editor.tsx",
     "isEntry": true,
@@ -22,18 +22,18 @@
     ]
   },
   "blocks/example-static/view.tsx": {
-    "file": "example-static-view.BSNsKk7z.js",
+    "file": "example-static-view.B2Sl6vmE.js",
     "name": "example-static-view",
     "src": "blocks/example-static/view.tsx",
     "isEntry": true
   },
   "src/editor.css": {
-    "file": "editor.BFs2K93V.css",
+    "file": "editor.EJkl0xWG.css",
     "src": "src/editor.css",
     "isEntry": true
   },
   "src/main.css": {
-    "file": "main-css.4Sz5Wn9s.css",
+    "file": "main-css.TNJTwXYv.css",
     "src": "src/main.css",
     "isEntry": true
   },
