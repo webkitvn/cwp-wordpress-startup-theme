@@ -46,7 +46,7 @@ function cwp_enqueue_assets() {
 		wp_enqueue_script( 'cwp-main', $main_js, array(), THEME_VERSION, true );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'cwp_enqueue_assets' );
+add_action( 'wp_enqueue_scripts', 'cwp_enqueue_assets', 999 );
 
 /**
  * Enqueue block editor assets
