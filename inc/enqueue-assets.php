@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string|false Asset URL or false if not found.
  */
 function cwp_get_asset( $asset ) {
-	$manifest_path = get_template_directory() . '/assets/.vite/manifest.json';
+	$manifest_path = get_stylesheet_directory() . '/assets/.vite/manifest.json';
 
 	if ( ! file_exists( $manifest_path ) ) {
 		return false;
@@ -29,7 +29,7 @@ function cwp_get_asset( $asset ) {
 		return false;
 	}
 
-	return get_template_directory_uri() . '/assets/' . $manifest[ $asset ]['file'];
+	return get_stylesheet_directory_uri() . '/assets/' . $manifest[ $asset ]['file'];
 }
 
 /**
