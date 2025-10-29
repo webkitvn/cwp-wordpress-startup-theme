@@ -62,8 +62,14 @@ wp-config.php
 /.cursor/
 /.factory/
 
-# Keep assets directory but ignore source maps
+# Keep assets directory but ignore compiled outputs
+# Ignore sourcemaps
 /assets/**/*.map
+# Ignore compiled JS and CSS bundles
+/assets/**/*.js
+/assets/**/*.css
+# Ignore Vite manifest output directory
+/assets/.vite/
 
 # OpenSpec (keep for development)
 # /openspec/
