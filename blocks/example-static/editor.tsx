@@ -1,8 +1,18 @@
 /**
+ * External dependencies
+ */
+import React from 'react';
+
+/**
  * WordPress dependencies
  */
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps, RichText } from '@wordpress/block-editor';
+
+/**
+ * Internal dependencies
+ */
+import blockMetadata from './block.json';
 
 interface BlockAttributes {
 	message: string;
@@ -44,7 +54,7 @@ const Save = ({ attributes }: SaveProps) => {
 	);
 };
 
-registerBlockType('cwp/example-static', {
+registerBlockType(blockMetadata as any, {
 	edit: Edit,
 	save: Save,
 });

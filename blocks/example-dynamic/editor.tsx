@@ -1,10 +1,20 @@
 /**
+ * External dependencies
+ */
+import React from 'react';
+
+/**
  * WordPress dependencies
  */
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps } from '@wordpress/block-editor';
 import { TextControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+
+/**
+ * Internal dependencies
+ */
+import blockMetadata from './block.json';
 
 interface BlockAttributes {
 	title: string;
@@ -33,6 +43,6 @@ const Edit = ({ attributes, setAttributes }: EditProps) => {
 	);
 };
 
-registerBlockType('cwp/example-dynamic', {
+registerBlockType(blockMetadata as any, {
 	edit: Edit,
 });
