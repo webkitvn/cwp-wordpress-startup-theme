@@ -1,4 +1,4 @@
-# StartupTheme
+# Wordpress Starter Theme
 
 Modern WordPress starter theme with Vite, Tailwind CSS v4, and quality tooling.
 
