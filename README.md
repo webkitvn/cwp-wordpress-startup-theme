@@ -1,4 +1,4 @@
-# StartupTheme
+# Kadence Starter Theme Child
 
 Modern WordPress child theme for Kadence with Vite, Tailwind CSS v4, and quality tooling.
 
