@@ -6,7 +6,7 @@ import React from 'react';
 /**
  * WordPress dependencies
  */
-import { registerBlockType } from '@wordpress/blocks';
+import { registerBlockType, type BlockConfiguration } from '@wordpress/blocks';
 import { useBlockProps } from '@wordpress/block-editor';
 import { TextControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
@@ -43,6 +43,9 @@ const Edit = ({ attributes, setAttributes }: EditProps) => {
 	);
 };
 
-registerBlockType(blockMetadata as any, {
+const blockConfig = {
+	...blockMetadata,
 	edit: Edit,
-});
+} satisfies BlockConfiguration<BlockAttributes>;
+
+registerBlockType<BlockAttributes>(blockConfig);

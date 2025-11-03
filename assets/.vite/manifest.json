@@ -4,7 +4,7 @@
     "name": "index"
   },
   "blocks/example-dynamic/editor.tsx": {
-    "file": "example-dynamic-editor.Y5sh2Xbo.js",
+    "file": "example-dynamic-editor.q_8doKaf.js",
     "name": "example-dynamic-editor",
     "src": "blocks/example-dynamic/editor.tsx",
     "isEntry": true,
@@ -13,7 +13,7 @@
     ]
   },
   "blocks/example-static/editor.tsx": {
-    "file": "example-static-editor.DuQt_A9U.js",
+    "file": "example-static-editor.i2SNZNWR.js",
     "name": "example-static-editor",
     "src": "blocks/example-static/editor.tsx",
     "isEntry": true,
