@@ -6,7 +6,7 @@ import React from 'react';
 /**
  * WordPress dependencies
  */
-import { registerBlockType } from '@wordpress/blocks';
+import { registerBlockType, type BlockConfiguration } from '@wordpress/blocks';
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 /**
@@ -54,7 +54,10 @@ const Save = ({ attributes }: SaveProps) => {
 	);
 };
 
-registerBlockType(blockMetadata as any, {
+const blockConfig = {
+	...blockMetadata,
 	edit: Edit,
 	save: Save,
-});
+} satisfies BlockConfiguration<BlockAttributes>;
+
+registerBlockType<BlockAttributes>(blockConfig);
