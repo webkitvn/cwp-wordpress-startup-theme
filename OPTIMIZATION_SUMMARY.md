@@ -85,6 +85,11 @@ optimizeDeps: {
 }
 ```
 
+### 8. **Block Scaffolding Cleanup**
+- Removed bundled example blocks to provide a clean starting point
+- Block directories are automatically registered when a `block.json` file exists
+- Vite automatically bundles any `editor.tsx`/`view.tsx` files found within block folders
+
 ## 📊 Performance Impact
 
 | Metric | Before | After | Improvement |

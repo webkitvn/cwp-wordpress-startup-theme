@@ -22,11 +22,9 @@
 - Dev mode activated correctly
 - Files built without hashing:
   - editor.css
-  - example-dynamic-editor.js
-  - example-static-editor.js
-  - example-static-view.js
   - main.js
   - main-css.css
+  - Block entry points auto-discovered
 - Watch mode activated
 - No emptyOutDir operation (files retained)
 - Faster rebuild times confirmed

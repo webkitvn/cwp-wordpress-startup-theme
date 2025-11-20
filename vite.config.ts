@@ -2,13 +2,54 @@ import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import { resolve } from 'path';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import { existsSync, readdirSync } from 'fs';
+
+const BLOCKS_DIR = resolve(__dirname, 'blocks');
+
+function getBlockFolders() {
+    if (!existsSync(BLOCKS_DIR)) {
+        return [];
+    }
+
+    return readdirSync(BLOCKS_DIR, { withFileTypes: true })
+        .filter((dirent) => dirent.isDirectory())
+        .map((dirent) => dirent.name);
+}
+
+// Dynamically discover block entry points
+function getBlockEntryPoints() {
+    const entries: Record<string, string> = {};
+
+    for (const blockName of getBlockFolders()) {
+        const blockPath = resolve(BLOCKS_DIR, blockName);
+        const editorFile = resolve(blockPath, 'editor.tsx');
+        const viewFile = resolve(blockPath, 'view.tsx');
+
+        if (existsSync(editorFile)) {
+            entries[`${blockName}-editor`] = editorFile;
+        }
+
+        if (existsSync(viewFile)) {
+            entries[`${blockName}-view`] = viewFile;
+        }
+    }
+
+    return entries;
+}
+
+function hasBlockManifests() {
+    return getBlockFolders().some((blockName) =>
+        existsSync(resolve(BLOCKS_DIR, blockName, 'block.json'))
+    );
+}
 
 export default defineConfig(({ mode }) => {
     const isDev = mode === 'development';
 
     const plugins = [tailwindcss()];
 
-    if (!isDev) {
+    // Only add static copy plugin in production if there are blocks to copy
+    if (!isDev && hasBlockManifests()) {
         plugins.push(
             viteStaticCopy({
                 targets: [
@@ -20,6 +61,8 @@ export default defineConfig(({ mode }) => {
             })
         );
     }
+
+    const blockEntries = getBlockEntryPoints();
 
     return {
         plugins,
@@ -39,18 +82,7 @@ export default defineConfig(({ mode }) => {
                     main: resolve(__dirname, 'src/main.ts'),
                     'main-css': resolve(__dirname, 'src/main.css'),
                     editor: resolve(__dirname, 'src/editor.css'),
-                    'example-static-editor': resolve(
-                        __dirname,
-                        'blocks/example-static/editor.tsx'
-                    ),
-                    'example-static-view': resolve(
-                        __dirname,
-                        'blocks/example-static/view.tsx'
-                    ),
-                    'example-dynamic-editor': resolve(
-                        __dirname,
-                        'blocks/example-dynamic/editor.tsx'
-                    ),
+                    ...blockEntries,
                 },
                 output: {
                     // Use consistent names in dev mode for faster cache hits

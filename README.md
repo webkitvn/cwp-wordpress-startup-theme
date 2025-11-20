@@ -8,7 +8,7 @@ Modern WordPress child theme for Kadence with Vite, Tailwind CSS v4, and quality
 - **Modern Build System**: Vite for fast, efficient builds with manifest-based asset loading
 - **Tailwind CSS v4**: Latest version using the official Vite plugin (no PostCSS required)
 - **TypeScript Support**: Full TypeScript integration for blocks and frontend code
-- **Gutenberg Blocks**: Example static and dynamic blocks with proper registration
+- **Gutenberg Blocks Ready**: Infrastructure for custom block development with proper registration
 - **Quality Tooling**: PHPCS (WordPress Coding Standards), ESLint, Prettier
 - **PHP 8.3**: Target modern PHP with type safety
 
@@ -121,15 +121,11 @@ startuptheme/
 │   │   └── manifest.json  # Asset manifest for WordPress
 │   ├── *.css              # Compiled stylesheets
 │   └── *.js               # Compiled scripts
-├── blocks/                # Gutenberg blocks
-│   ├── example-static/    # Static block example
-│   │   ├── block.json
-│   │   ├── editor.tsx
-│   │   └── view.tsx
-│   └── example-dynamic/   # Dynamic block example
+├── blocks/                # Gutenberg blocks (create folders per block)
+│   └── my-block/          # Example custom block directory
 │       ├── block.json
 │       ├── editor.tsx
-│       └── render.php
+│       └── view.tsx (optional)
 ├── inc/                   # Theme includes
 │   ├── enqueue-assets.php # Asset loading via manifest
 │   └── block-registration.php # Block registration
@@ -207,25 +203,13 @@ registerBlockType('cwp/my-block', {
 });
 ```
 
-### 4. Update vite.config.ts
+### 4. Add optional view.tsx (front-end script)
 
-Add your block to the `rollupOptions.input`:
+If your block needs front-end interactivity, add `blocks/my-block/view.tsx`. Any `editor.tsx`/`view.tsx` files are automatically bundled by Vite—no config changes required.
 
-```typescript
-'my-block-editor': resolve(__dirname, 'blocks/my-block/editor.tsx'),
-```
+### 5. Automatic registration
 
-### 5. Register in block-registration.php
-
-Add your block name to the `$blocks` array:
-
-```php
-$blocks = array(
-    'example-static',
-    'example-dynamic',
-    'my-block', // Add this
-);
-```
+Any block directory inside `blocks/` that contains a `block.json` file is automatically registered with WordPress. No manual PHP changes are necessary.
 
 ### 6. Build and Test
 

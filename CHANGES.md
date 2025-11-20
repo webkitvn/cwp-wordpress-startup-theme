@@ -55,6 +55,11 @@ The `pnpm dev` command was causing significant system lag due to inefficient bui
 - PERFORMANCE.md - Comprehensive performance guide
 - OPTIMIZATION_SUMMARY.md - Quick reference summary
 
+### 7. Block Scaffolding Cleanup
+- Removed bundled example blocks to provide a clean starting point
+- Automatically register any block directories with `block.json`
+- Automatically detect block `editor.tsx`/`view.tsx` files for Vite inputs
+
 ## Performance Impact
 
 | Metric | Before | After | Improvement |

@@ -1,59 +1,11 @@
 {
-  "_vendor-react.BgRHD0eI.js": {
-    "file": "vendor-react.BgRHD0eI.js",
-    "name": "vendor-react",
-    "imports": [
-      "_vendor.DVm2O_cn.js",
-      "_vendor-wordpress.ClZKthoV.js"
-    ]
-  },
-  "_vendor-wordpress.ClZKthoV.js": {
-    "file": "vendor-wordpress.ClZKthoV.js",
-    "name": "vendor-wordpress",
-    "imports": [
-      "_vendor.DVm2O_cn.js",
-      "_vendor-react.BgRHD0eI.js"
-    ]
-  },
-  "_vendor.DVm2O_cn.js": {
-    "file": "vendor.DVm2O_cn.js",
-    "name": "vendor"
-  },
-  "blocks/example-dynamic/editor.tsx": {
-    "file": "example-dynamic-editor.C396EomX.js",
-    "name": "example-dynamic-editor",
-    "src": "blocks/example-dynamic/editor.tsx",
-    "isEntry": true,
-    "imports": [
-      "_vendor-react.BgRHD0eI.js",
-      "_vendor-wordpress.ClZKthoV.js",
-      "_vendor.DVm2O_cn.js"
-    ]
-  },
-  "blocks/example-static/editor.tsx": {
-    "file": "example-static-editor.DYhe3ooV.js",
-    "name": "example-static-editor",
-    "src": "blocks/example-static/editor.tsx",
-    "isEntry": true,
-    "imports": [
-      "_vendor-react.BgRHD0eI.js",
-      "_vendor.DVm2O_cn.js",
-      "_vendor-wordpress.ClZKthoV.js"
-    ]
-  },
-  "blocks/example-static/view.tsx": {
-    "file": "example-static-view.B2Sl6vmE.js",
-    "name": "example-static-view",
-    "src": "blocks/example-static/view.tsx",
-    "isEntry": true
-  },
   "src/editor.css": {
-    "file": "editor.ry8ERzo1.css",
+    "file": "editor.cbTqJ7Xh.css",
     "src": "src/editor.css",
     "isEntry": true
   },
   "src/main.css": {
-    "file": "main-css.BUcQ8uTr.css",
+    "file": "main-css.Cc_Kmrec.css",
     "src": "src/main.css",
     "isEntry": true
   },

@@ -96,11 +96,39 @@ watch: {
 - Faster change detection
 - Lower memory consumption
 
-#### 5. Static Copy Plugin (Production Only)
+#### 5. Dynamic Block Discovery
+```typescript
+function getBlockEntryPoints() {
+  const blockFolders = readdirSync(blocksDir, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
+
+  for (const blockName of blockFolders) {
+    const blockPath = resolve(blocksDir, blockName);
+
+    if (existsSync(`${blockPath}/editor.tsx`)) {
+      entries[`${blockName}-editor`] = `${blockPath}/editor.tsx`;
+    }
+
+    if (existsSync(`${blockPath}/view.tsx`)) {
+      entries[`${blockName}-view`] = `${blockPath}/view.tsx`;
+    }
+  }
+
+  return entries;
+}
+```
+
+**Benefits:**
+- Automatically discovers and builds all block scripts
+- No manual Vite config changes when adding new blocks
+- Reduces configuration overhead
+
+#### 6. Static Copy Plugin (Production Only)
 ```typescript
 const plugins = [tailwindcss()];
 
-if (!isDev) {
+if (!isDev && hasBlockManifests()) {
   plugins.push(
     viteStaticCopy({ targets: [{ src: 'blocks/*/block.json', dest: '../blocks' }] })
   );
@@ -109,10 +137,10 @@ if (!isDev) {
 
 **Benefits:**
 - Prevents infinite rebuild loops caused by copying files during watch mode
-- Ensures block metadata is still copied during production builds
+- Ensures block metadata is still copied during production builds (when blocks exist)
 - Reduces unnecessary file writes during development
 
-#### 6. Dependency Pre-Bundling
+#### 7. Dependency Pre-Bundling
 ```typescript
 optimizeDeps: {
   include: [
