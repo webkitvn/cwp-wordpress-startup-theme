@@ -54,7 +54,17 @@ Start development with watch mode (no dev server, outputs to `/assets`):
 pnpm dev
 ```
 
-This watches your source files and rebuilds on changes.
+This watches your source files and rebuilds on changes with optimized performance.
+
+**Having performance issues?** See [PERFORMANCE.md](./PERFORMANCE.md) for detailed optimization guide and troubleshooting.
+
+### Clean Development Build
+
+If experiencing cache or build issues, run a clean dev build:
+
+```bash
+pnpm dev:clean
+```
 
 ### Production Build
 
@@ -160,22 +170,22 @@ mkdir -p blocks/my-block
 
 ```json
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3,
-	"name": "cwp/my-block",
-	"version": "1.0.0",
-	"title": "My Block",
-	"category": "text",
-	"icon": "smiley",
-	"description": "My custom block",
-	"textdomain": "cwp",
-	"editorScript": "file:./editor.js",
-	"attributes": {
-		"content": {
-			"type": "string",
-			"default": ""
-		}
-	}
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "cwp/my-block",
+    "version": "1.0.0",
+    "title": "My Block",
+    "category": "text",
+    "icon": "smiley",
+    "description": "My custom block",
+    "textdomain": "cwp",
+    "editorScript": "file:./editor.js",
+    "attributes": {
+        "content": {
+            "type": "string",
+            "default": ""
+        }
+    }
 }
 ```
 
@@ -186,14 +196,14 @@ import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps } from '@wordpress/block-editor';
 
 registerBlockType('cwp/my-block', {
-	edit: ({ attributes, setAttributes }) => {
-		const blockProps = useBlockProps();
-		return <div {...blockProps}>Edit view</div>;
-	},
-	save: ({ attributes }) => {
-		const blockProps = useBlockProps.save();
-		return <div {...blockProps}>Save view</div>;
-	},
+    edit: ({ attributes, setAttributes }) => {
+        const blockProps = useBlockProps();
+        return <div {...blockProps}>Edit view</div>;
+    },
+    save: ({ attributes }) => {
+        const blockProps = useBlockProps.save();
+        return <div {...blockProps}>Save view</div>;
+    },
 });
 ```
 
@@ -211,9 +221,9 @@ Add your block name to the `$blocks` array:
 
 ```php
 $blocks = array(
-	'example-static',
-	'example-dynamic',
-	'my-block', // Add this
+    'example-static',
+    'example-dynamic',
+    'my-block', // Add this
 );
 ```
 

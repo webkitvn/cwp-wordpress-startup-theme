@@ -16,8 +16,13 @@
 		"skipLibCheck": true,
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
-		"forceConsistentCasingInFileNames": true
+		"forceConsistentCasingInFileNames": true,
+		"paths": {
+			"@/*": ["./src/*"]
+		},
+		"incremental": true,
+		"tsBuildInfoFile": "./node_modules/.cache/typescript/tsbuildinfo.json"
 	},
-	"include": ["src/**/*"],
-	"exclude": ["node_modules", "vendor", "assets"]
+	"include": ["src/**/*", "blocks/**/*"],
+	"exclude": ["node_modules", "vendor", "assets", "**/*.spec.ts", "**/*.test.ts"]
 }

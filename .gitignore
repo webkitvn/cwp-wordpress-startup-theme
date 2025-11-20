@@ -62,6 +62,10 @@ wp-config.php
 /.cursor/
 /.factory/
 
+# Build and cache directories
+node_modules/.cache/
+node_modules/.vite/
+
 # Keep assets directory but ignore compiled outputs
 # Ignore sourcemaps
 /assets/**/*.map
