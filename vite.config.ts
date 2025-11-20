@@ -6,9 +6,10 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 export default defineConfig(({ mode }) => {
     const isDev = mode === 'development';
 
-    return {
-        plugins: [
-            tailwindcss(),
+    const plugins = [tailwindcss()];
+
+    if (!isDev) {
+        plugins.push(
             viteStaticCopy({
                 targets: [
                     {
@@ -16,8 +17,12 @@ export default defineConfig(({ mode }) => {
                         dest: '../blocks',
                     },
                 ],
-            }),
-        ],
+            })
+        );
+    }
+
+    return {
+        plugins,
         build: {
             manifest: true,
             outDir: 'assets',

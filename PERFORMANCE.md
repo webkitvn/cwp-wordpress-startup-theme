@@ -96,7 +96,23 @@ watch: {
 - Faster change detection
 - Lower memory consumption
 
-#### 5. Dependency Pre-Bundling
+#### 5. Static Copy Plugin (Production Only)
+```typescript
+const plugins = [tailwindcss()];
+
+if (!isDev) {
+  plugins.push(
+    viteStaticCopy({ targets: [{ src: 'blocks/*/block.json', dest: '../blocks' }] })
+  );
+}
+```
+
+**Benefits:**
+- Prevents infinite rebuild loops caused by copying files during watch mode
+- Ensures block metadata is still copied during production builds
+- Reduces unnecessary file writes during development
+
+#### 6. Dependency Pre-Bundling
 ```typescript
 optimizeDeps: {
   include: [
@@ -115,7 +131,7 @@ optimizeDeps: {
 - Cached vendor dependencies
 - Reduced rebuild times
 
-#### 6. esbuild Optimizations
+#### 7. esbuild Optimizations
 ```typescript
 esbuild: {
   target: isDev ? 'esnext' : 'es2015',
@@ -255,6 +271,11 @@ pnpm update
 2. Check for circular dependencies
 3. Reduce number of entry points if not needed
 4. Use native file watching (disable polling)
+
+### Rebuild Keeps Looping
+1. Confirm `vite-plugin-static-copy` is only enabled for production builds (see `vite.config.ts`)
+2. Avoid copying files into watched directories during `pnpm dev`
+3. If custom copy steps are required, run them manually or via a one-off script instead of the watch pipeline
 
 ### Cache Issues
 1. Delete `.vite` directories: `rm -rf assets/.vite node_modules/.vite`

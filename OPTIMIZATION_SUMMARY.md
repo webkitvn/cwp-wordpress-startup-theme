@@ -55,7 +55,19 @@ watch: {
 
 **Result:** 97% reduction in watched files (15,000+ → ~500)
 
-### 5. **Dependency Pre-Bundling**
+### 5. **Static Copy Plugin Restricted to Production**
+Handles `block.json` copying only during production builds to prevent watch loops:
+```typescript
+const plugins = [tailwindcss()];
+
+if (!isDev) {
+  plugins.push(viteStaticCopy({ targets: [{ src: 'blocks/*/block.json', dest: '../blocks' }] }));
+}
+```
+
+**Result:** Eliminates infinite rebuild loops caused by file copies while keeping production behavior intact
+
+### 6. **Dependency Pre-Bundling**
 Pre-bundles frequently used dependencies:
 ```typescript
 optimizeDeps: {
@@ -65,7 +77,7 @@ optimizeDeps: {
 
 **Result:** Faster initial startup and rebuilds
 
-### 6. **Enhanced Development Scripts** (`package.json`)
+### 7. **Enhanced Development Scripts** (`package.json`)
 ```json
 {
   "dev": "vite build --watch --mode development",

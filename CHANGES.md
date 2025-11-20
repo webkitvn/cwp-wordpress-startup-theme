@@ -21,6 +21,7 @@ The `pnpm dev` command was causing significant system lag due to inefficient bui
 - Consistent filenames (no hashing) in development
 - Manual chunk splitting (vendor-react, vendor-wordpress, vendor)
 - Optimized watch configuration with exclusions
+- Limited static copy plugin to production builds to prevent watch-triggered rebuild loops
 - Native file system events (non-Windows)
 - Dependency pre-bundling
 - esbuild optimizations
