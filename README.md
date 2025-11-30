@@ -37,22 +37,54 @@ pnpm build
 
 ## Development
 
-### Watch Mode
+### Development Mode with HMR
 
-Start development with watch mode (no dev server, outputs to `/assets`):
+Start Vite development server with Hot Module Replacement:
 
 ```bash
 pnpm dev
+```
+
+The dev server runs on `http://localhost:3000` and provides instant HMR updates. The theme automatically detects the dev server and loads assets from it.
+
+### Watch Mode (Alternative)
+
+Build and watch mode without dev server (outputs to `/assets`):
+
+```bash
+pnpm build:watch
 ```
 
 This watches your source files and rebuilds on changes.
 
 ### Production Build
 
-Create optimized production assets:
+Create optimized production assets with code splitting:
 
 ```bash
 pnpm build
+```
+
+Production builds include:
+- Minified assets
+- Vendor chunk splitting (React, WordPress packages)
+- Cache-busting hashes
+- No sourcemaps
+
+### Preview Build
+
+Preview the production build locally:
+
+```bash
+pnpm preview
+```
+
+### Clean Build Artifacts
+
+Remove all compiled assets and caches:
+
+```bash
+pnpm clean
 ```
 
 ## Code Quality
@@ -91,6 +123,18 @@ pnpm lint:js:strict
 **Format all source files with Prettier (tabs):**
 ```bash
 pnpm format
+```
+
+**Check formatting without changing files:**
+```bash
+pnpm format:check
+```
+
+### TypeScript
+
+**Type-check without building:**
+```bash
+pnpm type-check
 ```
 
 ## Directory Structure
@@ -141,22 +185,22 @@ mkdir -p blocks/my-block
 
 ```json
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3,
-	"name": "cwp/my-block",
-	"version": "1.0.0",
-	"title": "My Block",
-	"category": "text",
-	"icon": "smiley",
-	"description": "My custom block",
-	"textdomain": "cwp",
-	"editorScript": "file:./editor.js",
-	"attributes": {
-		"content": {
-			"type": "string",
-			"default": ""
-		}
-	}
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "cwp/my-block",
+    "version": "1.0.0",
+    "title": "My Block",
+    "category": "text",
+    "icon": "smiley",
+    "description": "My custom block",
+    "textdomain": "cwp",
+    "editorScript": "file:./editor.js",
+    "attributes": {
+        "content": {
+            "type": "string",
+            "default": ""
+        }
+    }
 }
 ```
 
@@ -167,14 +211,14 @@ import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps } from '@wordpress/block-editor';
 
 registerBlockType('cwp/my-block', {
-	edit: ({ attributes, setAttributes }) => {
-		const blockProps = useBlockProps();
-		return <div {...blockProps}>Edit view</div>;
-	},
-	save: ({ attributes }) => {
-		const blockProps = useBlockProps.save();
-		return <div {...blockProps}>Save view</div>;
-	},
+    edit: ({ attributes, setAttributes }) => {
+        const blockProps = useBlockProps();
+        return <div {...blockProps}>Edit view</div>;
+    },
+    save: ({ attributes }) => {
+        const blockProps = useBlockProps.save();
+        return <div {...blockProps}>Save view</div>;
+    },
 });
 ```
 
@@ -192,9 +236,9 @@ Add your block name to the `$blocks` array:
 
 ```php
 $blocks = array(
-	'example-static',
-	'example-dynamic',
-	'my-block', // Add this
+    'example-static',
+    'example-dynamic',
+    'my-block', // Add this
 );
 ```
 
@@ -232,9 +276,9 @@ pnpm lint:js:strict
 
 ## Asset Loading
 
-The theme uses Vite's manifest for asset loading in all environments (no dev server). WordPress reads the manifest at `/assets/.vite/manifest.json` to resolve hashed asset paths.
+The theme uses Vite's manifest for asset loading in production and automatically switches to the Vite dev server (with `@vite/client`) during development. WordPress reads the manifest at `/assets/.vite/manifest.json` for hashed production assets, and falls back to `http://localhost:3000` when the dev server is available.
 
-**Manifest-based enqueuing** ensures cache-busting and proper asset resolution.
+**Manifest-based enqueuing + dev server detection** ensures cache-busting in production and instant feedback during local development.
 
 ## Coding Standards
 
@@ -249,3 +293,9 @@ GPL-2.0-or-later
 ## Support
 
 For issues and questions, refer to project documentation or WordPress support resources.
+
+## Additional Documentation
+
+- [SETUP.md](./SETUP.md) – Complete environment setup instructions
+- [WORKFLOWS.md](./WORKFLOWS.md) – Day-to-day development and deployment workflows
+- [CHANGELOG.md](./CHANGELOG.md) – Summary of changes across releases
