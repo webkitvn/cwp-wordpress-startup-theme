@@ -71,5 +71,8 @@ wp-config.php
 # Ignore Vite manifest output directory
 /assets/.vite/
 
+# Environment files
+.env
+
 # OpenSpec (keep for development)
 # /openspec/

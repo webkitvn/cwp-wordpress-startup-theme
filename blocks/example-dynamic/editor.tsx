@@ -1,12 +1,8 @@
 /**
- * External dependencies
- */
-import React from 'react';
-
-/**
  * WordPress dependencies
  */
 import { registerBlockType } from '@wordpress/blocks';
+import type { BlockConfiguration } from '@wordpress/blocks';
 import { useBlockProps } from '@wordpress/block-editor';
 import { TextControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
@@ -43,6 +39,9 @@ const Edit = ({ attributes, setAttributes }: EditProps) => {
 	);
 };
 
-registerBlockType(blockMetadata as any, {
-	edit: Edit,
-});
+registerBlockType<BlockAttributes>(
+	blockMetadata as BlockConfiguration<BlockAttributes>,
+	{
+		edit: Edit,
+	}
+);
