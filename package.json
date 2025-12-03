@@ -9,7 +9,20 @@
 		"build": "vite build",
 		"lint:js": "eslint src --ext .js,.jsx,.ts,.tsx --max-warnings=100",
 		"lint:js:strict": "eslint src --ext .js,.jsx,.ts,.tsx --max-warnings=0",
-		"format": "prettier --write \"{src,blocks}/**/*.{js,jsx,ts,tsx,json,css,scss}\""
+		"format": "prettier --write \"{src,blocks}/**/*.{js,jsx,ts,tsx,json,css,scss}\"",
+		"prepare": "husky"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx}": [
+			"eslint --max-warnings=0",
+			"prettier --write"
+		],
+		"*.{json,css,scss}": [
+			"prettier --write"
+		],
+		"*.php": [
+			"vendor/bin/phpcs"
+		]
 	},
 	"dependencies": {
 		"@wordpress/block-editor": "^15.0.0",
@@ -31,6 +44,8 @@
 		"@wordpress/eslint-plugin": "^22.20.0",
 		"eslint": "^8.57.1",
 		"fast-glob": "^3.3.3",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.2.7",
 		"prettier": "^3.3.3",
 		"sass": "^1.80.7",
 		"tailwindcss": "^4.0.0-beta.7",
