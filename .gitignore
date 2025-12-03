@@ -68,6 +68,7 @@ wp-config.php
 # Ignore compiled JS and CSS bundles
 /assets/**/*.js
 /assets/**/*.css
+/assets/images
 # Ignore Vite manifest output directory
 /assets/.vite/
 
