@@ -1,39 +1,11 @@
 {
-  "_index.CDGe6IN2.js": {
-    "file": "index.CDGe6IN2.js",
-    "name": "index"
-  },
-  "blocks/example-dynamic/editor.tsx": {
-    "file": "example-dynamic-editor.q_8doKaf.js",
-    "name": "example-dynamic-editor",
-    "src": "blocks/example-dynamic/editor.tsx",
-    "isEntry": true,
-    "imports": [
-      "_index.CDGe6IN2.js"
-    ]
-  },
-  "blocks/example-static/editor.tsx": {
-    "file": "example-static-editor.i2SNZNWR.js",
-    "name": "example-static-editor",
-    "src": "blocks/example-static/editor.tsx",
-    "isEntry": true,
-    "imports": [
-      "_index.CDGe6IN2.js"
-    ]
-  },
-  "blocks/example-static/view.tsx": {
-    "file": "example-static-view.B2Sl6vmE.js",
-    "name": "example-static-view",
-    "src": "blocks/example-static/view.tsx",
-    "isEntry": true
-  },
   "src/editor.css": {
-    "file": "editor.EJkl0xWG.css",
+    "file": "editor.DFwXLSJ2.css",
     "src": "src/editor.css",
     "isEntry": true
   },
   "src/main.css": {
-    "file": "main-css.Cs7f7CH0.css",
+    "file": "main-css.U6EK5L9y.css",
     "src": "src/main.css",
     "isEntry": true
   },
