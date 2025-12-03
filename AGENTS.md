@@ -23,7 +23,7 @@ Keep this managed block so 'openspec update' can refresh the instructions.
 Sources live in `src/` (Vite entry `main.ts`, Tailwind styles) and `blocks/` (block.json metadata plus React scripts per block). PHP hooks sit under `inc/`, reusable partials in `template-parts/`, and root templates follow WordPress hierarchy. Compiled assets land in `assets/`; rebuild instead of editing output.
 
 ## Build, Test & Development Commands
-Run `npm install` once per environment, `npm run dev` for watch builds, and `npm run build` for production bundles. Lint with `npm run lint:js` or the stricter variant before merge, format via `npm run format`, and enforce PHP standards with `composer run phpcs` plus syntax checks through `composer run lint:php`.
+Run `pnpm install` once per environment, `pnpm run dev` for watch builds, and `pnpm run build` for production bundles. Lint with `pnpm run lint:js` or the stricter variant before merge, format via `pnpm run format`, and enforce PHP standards with `composer run phpcs` plus syntax checks through `composer run lint:php`.
 
 ## Coding Style & Naming Conventions
 PHP follows WordPress PHPCS defaults: tab indentation, snake_case functions prefixed with `cwp_`, and escaped output using core helpers. Front-end code favors ES modules, functional React components, and kebab-case filenames matching block slugs. Prettier manages JS/TS formatting—avoid manual spacing tweaks—and colocate custom SCSS with the component using it.
