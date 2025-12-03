@@ -22,6 +22,7 @@ module.exports = {
 		'@wordpress/dependency-group': 'warn',
 		'@wordpress/no-unsafe-wp-apis': 'warn',
 		'no-console': ['warn', { allow: ['warn', 'error'] }],
+		'max-lines': ['error', { max: 500, skipBlankLines: true, skipComments: true }],
 	},
 	settings: {
 		react: {

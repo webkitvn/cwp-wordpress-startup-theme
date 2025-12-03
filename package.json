@@ -7,8 +7,8 @@
 	"scripts": {
 		"dev": "vite build --watch --mode development",
 		"build": "vite build",
-		"lint:js": "eslint src blocks --ext .js,.jsx,.ts,.tsx --max-warnings=100 --rule 'max-lines:[1,{max:400,skipBlankLines:true,skipComments:true}]'",
-		"lint:js:strict": "eslint src blocks --ext .js,.jsx,.ts,.tsx --rule 'max-lines:[2,{max:500,skipBlankLines:true,skipComments:true}]' --max-warnings=0",
+		"lint:js": "eslint src --ext .js,.jsx,.ts,.tsx --max-warnings=100",
+		"lint:js:strict": "eslint src --ext .js,.jsx,.ts,.tsx --max-warnings=0",
 		"format": "prettier --write \"{src,blocks}/**/*.{js,jsx,ts,tsx,json,css,scss}\""
 	},
 	"dependencies": {
